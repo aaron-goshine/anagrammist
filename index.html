@@ -3,11 +3,50 @@
   <head>  
     <meta charset="UTF-8">
     <title>Anagrammy Page</title>
-    <script  type="text/javascript" src="index.js">
-    </script>
+    <style>
+    .container { 
+      width: 50%;
+      margin: 20px auto;
+    }
+
+  #display, input { 
+      width: 100%;
+      font-size: 1em;
+      padding: 0.5em;
+      height: 2em;
+      line-height: 2em;
+    }
+
+    </style>
   </head>
   <body>
-    nothing here to see have a look in your javascript console
+    <div class="container">
+    <p>Please type a word and hit enter and let see if we have an anagram for it</p>
+    <div class="form-wrapper">
+      <input id="userWord" />
+    </div>
+    <div id="display">
+    </div>
+  </div>
+  <script type="text/javascript" src="Anagram-list.js"></script>
+  <script  type="text/javascript" src="Anagrammy.js"></script>
+  <script type="text/javascript">
+    /**
+     * @param AnagramList  is loaded from an external file
+     **/
+  var anagrammy = new Anagrammy(AnagramList, {}, true);
+
+  window.onload = function (){
+    var userWord = document.getElementById('userWord');
+    var display = document.getElementById('display');
+
+    userWord.addEventListener('change', function (e) {
+      var value = e.target.value;
+      anagrams = anagrammy.find(value);
+      display.innerHTML = anagrams.join();
+    });
+    } 
+    </script>
   </body>
 </html>
 
