@@ -110,9 +110,12 @@ Anagrammy.prototype.searchForAnagram = function (targetWord, resultCallback) {
 // the letters contained within the anagrams them we would get constant time.
 
 Anagrammy.prototype.prerender = function () {
-  for (var i = this.getLen(); i--;) {
-    this.searchForAnagram(this.list[i]);
-  }
+  var self = this;
+  setTimeout(function () {
+    for (var i = self.getLen(); i--;) {
+      self.searchForAnagram(self.list[i]);
+    }
+  }, 0);
 };
 
 /**
@@ -125,7 +128,6 @@ Anagrammy.prototype.prerender = function () {
 Anagrammy.prototype.find = function (inputWord) {
   var key = Anagrammy.sortStr(inputWord);
   var self = this;
-  debugger;
 
   if (this.listCache[key]) {
     return this.listCache[key];

@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <title>Anagrammy Page</title>
     <style>
-    .container { 
-      width: 50%;
-      margin: 20px auto;
-    }
+      .container { 
+        width: 50%;
+        margin: 20px auto;
+        font-family: Helvetica, Arial, sans;
+      }
 
-  #display, input { 
-      width: 100%;
-      font-size: 1em;
-      padding: 0.5em;
-      height: 2em;
-      line-height: 2em;
-    }
+      #display, input { 
+        font-size: 1em;
+        width: 100%;
+        padding: 0.5em;
+        height: 2em;
+        line-height: 2em;
+      }
 
+      #display {
+        font-size: 1.5em;
+      }
     </style>
   </head>
   <body>
@@ -41,9 +45,9 @@
     var display = document.getElementById('display');
 
     userWord.addEventListener('change', function (e) {
-      var value = e.target.value;
+      var value = e.target.value.trim();
       anagrams = anagrammy.find(value);
-      display.innerHTML = anagrams.join();
+      display.innerHTML = anagrams.join(', ');
     });
     } 
     </script>
